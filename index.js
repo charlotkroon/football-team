@@ -1,18 +1,19 @@
 const express = require("express");
+const app = express();
 const db = require("./db");
 
-//middlewares
+//middleware
 const bodyParser = require("body-parser");
 
 //Routers
 const teamRouter = require("./team/router");
 
 //Init
-const app = express();
+
 const port = 4000;
 
 //app.use
-app.use(bodyParser.json());
-app.use(teamRouter);
+app.use(express.json());
+app.use("/team", teamRouter);
 
 app.listen(port, () => console.log(`Listening on :${port}`));

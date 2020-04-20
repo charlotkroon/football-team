@@ -11,3 +11,5 @@ router.get("/team", (req, res, next) => {
     })
     .catch(next);
 });
+
+module.exports = router;
