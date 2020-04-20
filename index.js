@@ -16,4 +16,8 @@ const port = 4000;
 app.use(express.json());
 app.use("/team", teamRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
+
 app.listen(port, () => console.log(`Listening on :${port}`));
