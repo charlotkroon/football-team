@@ -12,4 +12,12 @@ router.get("/", (req, res, next) => {
     .catch(next);
 });
 
+router.post("/", (req, res, next) =>p {
+  Team.create()
+    .then((team) => {
+      res.send(team);
+    })
+    .catch(next);
+});
+
 module.exports = router;
