@@ -1,5 +1,11 @@
 const express = require("express");
 
+//middlewares
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const bodyParserMiddleware = bodyware.json;
+const corsMiddleware = cors();
+
 //Routers
 const teamRouter = require("./team/router");
 
