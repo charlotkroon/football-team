@@ -5,5 +5,9 @@ const router = new Router();
 
 //GET endpoint
 router.get("/team", (req, res, next) => {
-  Team.findAll;
+  Team.findAll()
+    .then((team) => {
+      res.send(team);
+    })
+    .catch(next);
 });
