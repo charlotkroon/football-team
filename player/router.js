@@ -33,3 +33,13 @@ router.delete("/player", async (req, res, next) => {
     })
     .catch(next);
 });
+
+//route parameter id
+router.get("/player/:id", async (req, res, next) => {
+  console.log("the player req.params.id is:");
+  Player.findByPk(req.body)
+    .then((player) => {
+      res.send(player);
+    })
+    .catch(next);
+});
