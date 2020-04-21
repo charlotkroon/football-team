@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 const databaseUrl = "postgres://postgres:constrasena@localhost:5432/postgres";
 const db = new Sequelize(databaseUrl);
 
-db.sync()
+db.sync({ force: true })
   .then(() => console.log("Database schema updated"))
   .catch(console.error);
 
