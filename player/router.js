@@ -43,3 +43,5 @@ router.get("/player/:id", async (req, res, next) => {
     })
     .catch(next);
 });
+
+module.exports = router;
