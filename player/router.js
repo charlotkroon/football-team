@@ -10,3 +10,10 @@ router.get("/player", (req, res, next) => {
     })
     .catch(next);
 });
+
+//Create a new player
+router.post("/player", async (req, res, next) => {
+  Player.create(req.body)
+    .then((player) => res.json(player))
+    .catch(next);
+});
