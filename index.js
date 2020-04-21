@@ -4,20 +4,20 @@ const db = require("./db");
 
 //middleware
 const bodyParser = require("body-parser");
+const cors = require("cors");
+const bodyParserMiddleWare = bodyParser.json();
+const corsMiddleware = cors();
 
 //Routers
 const teamRouter = require("./team/router");
 
-//Init
+const Team = require("./team/model");
 
+//Init
 const port = 4000;
 
 //app.use
 app.use(express.json());
 app.use(teamRouter);
-
-app.get("/", (req, res) => {
-  res.send("Hello world");
-});
 
 app.listen(port, () => console.log(`Listening on :${port}`));

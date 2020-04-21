@@ -4,7 +4,7 @@ const Team = require("./model");
 const router = new Router();
 
 //call the Team.findAll method inside the router method
-router.get("/team", (req, res, next) => {
+router.get("/team", async (req, res, next) => {
   Team.findAll()
     .then((team) => {
       res.send(team);
@@ -12,11 +12,10 @@ router.get("/team", (req, res, next) => {
     .catch(next);
 });
 
-router.post("/team", (req, res, next) => {
-  Team.create()
-    .then((team) => {
-      res.send(team);
-    })
+// Create a new team account
+router.post("/team", async (req, res, next) => {
+  Team.create(req.body)
+    .then((team) => res.json(team))
     .catch(next);
 });
 
