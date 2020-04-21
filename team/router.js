@@ -37,14 +37,18 @@ router.delete("/team", async (req, res, next) => {
     .catch(next);
 });
 
-//route parameter (id)
-router.get("/team/:id", (req, res, next) => {
-  console.log("req.params.id is:");
-  Team.findByPk(req.body).then(
-    ((team) => {
-      res.send(team);
-    }).catch(next)
-  );
+router.put("/team/:teamId", async (req, res, next) => {
+  console.log("req.params", "is wrecked by params?");
+  Team.findByPk(req.params.teamId)
+    .then((team) => {
+      console.log("Is there a team found?", team);
+      if (team) {
+        team.update(req.body).then((team) => res.json(team));
+      } else {
+        res.status(404).end();
+      }
+    })
+    .catch(next);
 });
 
 module.exports = router;
