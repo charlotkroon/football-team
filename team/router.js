@@ -20,4 +20,13 @@ router.post("/", (req, res, next) => {
     .catch(next);
 });
 
+//route parameter (id)
+router.get("/team/:id", (req, res, next) => {
+  Team.findByPk().then(
+    ((team) => {
+      res.send(team);
+    }).catch(next)
+  );
+});
+
 module.exports = router;
