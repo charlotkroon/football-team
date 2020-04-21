@@ -1,11 +1,20 @@
 const { Router } = require("express");
 const Team = require("./model");
+const Player = require("../player/model");
 
 const router = new Router();
 
 //call the Team.findAll method inside the router method
 router.get("/team", async (req, res, next) => {
   Team.findAll()
+    .then((team) => {
+      res.send(team);
+    })
+    .catch(next);
+});
+
+router.get("/team/:teamId", (req, res, next) => {
+  Team.findByPk(req.params.teamId, { include: [Player] })
     .then((team) => {
       res.send(team);
     })
@@ -38,7 +47,6 @@ router.delete("/team", async (req, res, next) => {
 });
 
 router.put("/team/:teamId", async (req, res, next) => {
-  console.log("req.params", "is wrecked by params?");
   Team.findByPk(req.params.teamId)
     .then((team) => {
       console.log("Is there a team found?", team);
