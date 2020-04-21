@@ -14,6 +14,7 @@ router.get("/team", async (req, res, next) => {
 
 // Create a new team account
 router.post("/team", async (req, res, next) => {
+  console.log("WHAT IS REQ.BODY", req.body);
   Team.create(req.body)
     .then((team) => res.json(team))
     .catch(next);
