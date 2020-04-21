@@ -11,6 +11,9 @@ const teamRouter = require("./team/router");
 //Init
 const port = 4000;
 
+//Model
+const Player = require("./player/model");
+
 //app.use
 app.use(express.json());
 app.use(teamRouter);
