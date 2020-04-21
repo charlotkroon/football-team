@@ -4,14 +4,9 @@ const db = require("./db");
 
 //middleware
 const bodyParser = require("body-parser");
-const cors = require("cors");
-const bodyParserMiddleWare = bodyParser.json();
-const corsMiddleware = cors();
 
 //Routers
 const teamRouter = require("./team/router");
-
-const Team = require("./team/model");
 
 //Init
 const port = 4000;
