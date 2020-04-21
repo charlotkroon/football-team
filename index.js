@@ -7,12 +7,9 @@ const bodyParser = require("body-parser");
 
 //Routers
 const teamRouter = require("./team/router");
-
+const playerRouter = require("./player/router");
 //Init
 const port = 4000;
-
-//Model
-const Player = require("./player/model");
 
 //app.use
 app.use(express.json());
