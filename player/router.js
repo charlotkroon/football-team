@@ -1,10 +1,19 @@
 const { Router } = require("express");
 const Player = require("./model");
+const Team = require("../team/model");
 
 const router = new Router();
 
 router.get("/player", (req, res, next) => {
   Player.findAll()
+    .then((player) => {
+      res.send(player);
+    })
+    .catch(next);
+});
+
+router.get("/player/:id", (req, res, next) => {
+  Player.findByPk(req.params.id, { include: [Team] })
     .then((player) => {
       res.send(player);
     })
@@ -34,12 +43,14 @@ router.delete("/player", async (req, res, next) => {
     .catch(next);
 });
 
-//route parameter id
-router.get("/player/:id", async (req, res, next) => {
-  console.log("the player req.params.id is:");
-  Player.findByPk(req.body)
+router.put("/player/:playerId", (req, res, next) => {
+  Player.findByPk(req.params.playerId)
     .then((player) => {
-      res.send(player);
+      if (player) {
+        player.update(req.body).then((player) => res.json(player));
+      } else {
+        res.status(404).end();
+      }
     })
     .catch(next);
 });
