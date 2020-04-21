@@ -44,4 +44,4 @@ router.get("/player/:id", async (req, res, next) => {
     .catch(next);
 });
 
-module.exports = router;
+module.exports = router; //without this, the following error will occur: throw new TypeError('app.use() requires a middleware function')
